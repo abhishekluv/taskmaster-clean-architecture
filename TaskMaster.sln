@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36717.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{920AD729-9B1E-4CF5-8F20-73CF50638F47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A7F241FE-D399-4565-AEE0-3616BE19C309}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "adr", "adr", "{AEF46A36-E83B-4565-A5DA-589EB67AB026}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMaster.Domain", "src\TaskMaster.Domain\TaskMaster.Domain.csproj", "{648C37CF-0896-4533-9DB4-03DAF83FA8C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMaster.Application", "src\TaskMaster.Application\TaskMaster.Application.csproj", "{A65DC50E-437E-41EA-B164-161937CA4AE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMaster.Infrastructure", "src\TaskMaster.Infrastructure\TaskMaster.Infrastructure.csproj", "{60DD295F-C6E6-4430-86DA-8FAD0BC10F38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMaster.WebApi", "src\TaskMaster.WebApi\TaskMaster.WebApi.csproj", "{F2962838-6DD4-474F-BCBC-08CE9595CC44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{648C37CF-0896-4533-9DB4-03DAF83FA8C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{648C37CF-0896-4533-9DB4-03DAF83FA8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{648C37CF-0896-4533-9DB4-03DAF83FA8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{648C37CF-0896-4533-9DB4-03DAF83FA8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A65DC50E-437E-41EA-B164-161937CA4AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65DC50E-437E-41EA-B164-161937CA4AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65DC50E-437E-41EA-B164-161937CA4AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65DC50E-437E-41EA-B164-161937CA4AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60DD295F-C6E6-4430-86DA-8FAD0BC10F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60DD295F-C6E6-4430-86DA-8FAD0BC10F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60DD295F-C6E6-4430-86DA-8FAD0BC10F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60DD295F-C6E6-4430-86DA-8FAD0BC10F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2962838-6DD4-474F-BCBC-08CE9595CC44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2962838-6DD4-474F-BCBC-08CE9595CC44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2962838-6DD4-474F-BCBC-08CE9595CC44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2962838-6DD4-474F-BCBC-08CE9595CC44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{648C37CF-0896-4533-9DB4-03DAF83FA8C4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{A65DC50E-437E-41EA-B164-161937CA4AE3} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{60DD295F-C6E6-4430-86DA-8FAD0BC10F38} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F2962838-6DD4-474F-BCBC-08CE9595CC44} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AFB04CDF-F453-42F8-A245-28A28A8934B6}
+	EndGlobalSection
+EndGlobal
