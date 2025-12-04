@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using TaskMaster.Application.Common.Interfaces;
+using TaskMaster.Infrastructure.Identity;
 using TaskMaster.Infrastructure.Persistence;
 
 namespace TaskMaster.Infrastructure
@@ -19,6 +21,13 @@ namespace TaskMaster.Infrastructure
             });
 
             services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ApplicationDbContext>());
+
+            //Identity
+            services.AddIdentityCore<ApplicationUser>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            }).AddRoles<IdentityRole>()
+              .AddEntityFrameworkStores<ApplicationDbContext>();
 
             return services;
         }

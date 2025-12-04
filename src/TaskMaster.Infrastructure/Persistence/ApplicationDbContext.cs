@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TaskMaster.Application.Common.Interfaces;
 using TaskMaster.Domain.Entities;
+using TaskMaster.Infrastructure.Identity;
 
 namespace TaskMaster.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : DbContext, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -26,10 +28,11 @@ namespace TaskMaster.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Apply all IEntityTypeConfiguration<> from this assembly
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
-
+            //this is important for Identity bcz Identity adds its own tables
             base.OnModelCreating(modelBuilder);
+
+            //Apply all IEntityTypeConfiguration<> from this assembly
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);          
         }
     }
 }
