@@ -22,5 +22,8 @@ namespace TaskMaster.Domain.Entities
 
         // Many-to-many Tags
         public ICollection<Tag> Tags { get; set; } = new List<Tag>();
+
+        // One-to-many Reminders
+        public ICollection<Reminder> Reminders { get; set; } = new List<Reminder>();
     }
 }
