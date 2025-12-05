@@ -22,6 +22,8 @@ namespace TaskMaster.Application.Projects.Queries.GetProjectById
                                     .Include(x => x.Tasks)
                                     .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
+            if (project is null) throw new KeyNotFoundException($"Project with {request.Id} not found");
+
             return project?.ToDto();
         }
     }
