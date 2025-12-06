@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using TaskMaster.Application.Common.Models;
+using TaskMaster.Application.Reminders.Commands.CreateReminder;
+using TaskMaster.Application.Tasks.Commands.AssignTagToTask;
 using TaskMaster.Application.Tasks.Commands.ChangeTaskStatus;
 using TaskMaster.Application.Tasks.Commands.CreateTask;
 using TaskMaster.Application.Tasks.Commands.DeleteTask;
+using TaskMaster.Application.Tasks.Commands.RemoveTagFromTask;
 using TaskMaster.Application.Tasks.Commands.UpdateTask;
 using TaskMaster.Application.Tasks.Dtos;
 using TaskMaster.Application.Tasks.Queries.GetTaskById;
@@ -30,6 +33,55 @@ namespace TaskMaster.WebApi.Controllers
         {
             _mediator = mediator;
         }
+
+        [HttpPost("{id:guid}/tags")]
+        public async Task<IActionResult> AssignTag(
+            Guid projectId,
+            Guid id,
+            [FromBody] AssignTagToTaskRequestDto request,
+            CancellationToken ct)
+        {
+            // NOTE: We assume the task belongs to the given project; if you want,
+            // we can enforce this inside the handler later by checking ProjectId.
+            var command = new AssignTagToTaskCommand(
+                id,
+                request.TagName,
+                request.Color);
+
+            await _mediator.Send(command, ct);
+            return NoContent();
+        }
+
+        [HttpDelete("{id:guid}/tags")]
+        public async Task<IActionResult> RemoveTag(
+            Guid projectId,
+            Guid id,
+            [FromBody] RemoveTagFromTaskRequestDto request,
+            CancellationToken ct)
+        {
+            var command = new RemoveTagFromTaskCommand(
+                id,
+                request.TagName);
+
+            await _mediator.Send(command, ct);
+            return NoContent();
+        }
+
+        [HttpPost("{id:guid}/reminders")]
+        public async Task<ActionResult<Guid>> CreateReminder(
+            Guid projectId,
+            Guid id,
+            [FromBody] CreateReminderRequestDto request,
+            CancellationToken ct)
+        {
+            var command = new CreateReminderCommand(
+                id,
+                request.ReminderTime);
+
+            var reminderId = await _mediator.Send(command, ct);
+            return CreatedAtAction(nameof(GetById), new { projectId, id }, reminderId);
+        }
+
 
         [HttpPost]
         public async Task<ActionResult<Guid>> Create(
